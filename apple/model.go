@@ -17,6 +17,7 @@ type WebValidationTokenRequest struct {
 	// Redirect URLs must be registered with Apple. You can register up to 10. Apple will throw an error with IP address
 	// URLs on the authorization screen, and will not let you add localhost in the developer portal.
 	RedirectURI string
+	Scope       string
 }
 
 // AppValidationTokenRequest is based off of https://developer.apple.com/documentation/signinwithapplerestapi/generate_and_validate_tokens
@@ -30,7 +31,8 @@ type AppValidationTokenRequest struct {
 
 	// Code is the authorization code received from your application’s user agent.
 	// The code is single use only and valid for five minutes.
-	Code string
+	Code  string
+	Scope string
 }
 
 // ValidationRefreshRequest is based off of https://developer.apple.com/documentation/signinwithapplerestapi/generate_and_validate_tokens

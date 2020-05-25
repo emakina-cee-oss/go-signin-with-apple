@@ -66,6 +66,8 @@ func (c *Client) VerifyWebToken(ctx context.Context, reqBody WebValidationTokenR
 	data.Set("code", reqBody.Code)
 	data.Set("redirect_uri", reqBody.RedirectURI)
 	data.Set("grant_type", "authorization_code")
+	data.Set("scope", reqBody.Scope)
+	data.Set("request_mode", "form_post")
 
 	return doRequest(c.client, &result, c.validationURL, data)
 }
@@ -77,6 +79,8 @@ func (c *Client) VerifyAppToken(ctx context.Context, reqBody AppValidationTokenR
 	data.Set("client_secret", reqBody.ClientSecret)
 	data.Set("code", reqBody.Code)
 	data.Set("grant_type", "authorization_code")
+	data.Set("scope", reqBody.Scope)
+	data.Set("request_mode", "form_post")
 
 	return doRequest(c.client, &result, c.validationURL, data)
 }
